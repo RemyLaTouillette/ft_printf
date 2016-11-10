@@ -6,7 +6,7 @@
 /*   By: sduprey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 14:01:40 by sduprey           #+#    #+#             */
-/*   Updated: 2016/11/10 16:31:24 by sduprey          ###   ########.fr       */
+/*   Updated: 2016/11/10 17:33:24 by vpailhe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,19 @@ int		isarg(int i, char *str)
 	return (0);
 }
 
+
 int	ft_printf(char *str, ...)
 {
 	va_list	ap;
 	int		i;
-	char	**tab;
+//	int		nb_occ; //how many % whitout %%
+	t_pf	*start;
 
+	start = parse_input(str);
+	
+
+
+	/*
 	tab = ft_strsplit(str, '%');
 	i = 0;
 	while (tab[i])
@@ -35,6 +42,7 @@ int	ft_printf(char *str, ...)
 		ft_putendl(tab[i]);
 		i++;
 	}
+	*/
 
 	va_start(ap, str);
 	i = 0;

@@ -13,6 +13,8 @@
 NAME = ft_printf
 
 SRC = ft_printf.c \
+	  parse.c \
+	  list.c \
 	  main.c
 
 SRCDIR = src/
