@@ -47,7 +47,7 @@ RM = rm -rf
 all: lft $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) -lncurses -o $(NAME) $(LIB) $^
+	@$(CC) $(CFLAGS) -lncurses -o $(NAME) $^ $(LIB)
 	@echo ""
 	@echo $(PX_STR) : $(EX_STR)
 	@echo ""
