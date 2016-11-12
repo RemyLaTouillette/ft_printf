@@ -1,67 +1,108 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vpailhe <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/12 11:51:56 by vpailhe           #+#    #+#             */
+/*   Updated: 2016/11/12 18:28:40 by vpailhe          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ft_printf.h>
 
-//ft_printf("zz %s a %d#-LLd %hey");
-
-int			find_percent(char *s, int index)
+void		display(t_pf *l)
 {
-	if (s && (s[index] != '\0')) {
-		while (s[index] != '\0')
-		{
-			if (s[index] == '%')
-				return index;
-			index++;
-		}
+	if (l)
+	{
+		printf("SUB	|%s|\n", l->sub);
+		printf("CSIZE	|%d|\n", (int)l->content_size);
+		printf("FLAG	|%s|\n", l->flag);
+		printf("PAD	|%d|\n", l->padvalue);
+		printf("ISPRECI	|%d|\n", l->ispreci);
+		printf("PRECI	|%d|\n", l->preci);
+		printf("MODIF	|%s|\n", l->modif);
+		printf("TYPE	|%s|\n\n", l->format);
+		display(l->nxt);
 	}
-	return (ft_strlen(s));
 }
 
-void display(t_pf *l) {
-	while(l->nxt != NULL)
+t_pf		*next_occ(char *s, int *i)
+{
+	t_pf	*rtn;
+	char	*tmpstr;
+	int		start;
+	int		end;
+
+	start = *i;
+	rtn = NULL;
+	if (s && s[start] != '\0')
 	{
-		ft_putendl(l->sub);
+		end = start + 1;
+		while (s[end] != '\0' && s[end] == '%')
+			end++;
+		while (s[end] != '\0' && s[end] != '%')
+			++end;
+		tmpstr = ft_strsub(s, start, (end - start));
+		tmpstr[(end - start) + 1] = '\0';
+		rtn = pf_new(tmpstr, ft_strlen(tmpstr) + 1);
+		free(tmpstr);
+		*i = end;
+	}
+	else
+		*i = -1;
+	return (rtn);
+}
+
+void		fill_struct(t_pf *l)
+{
+	int		index;
+
+	while (l)
+	{
+		if (l->sub[0] == '%')
+		{
+			index = 1;
+			l->flag = get_flag(l->sub, &index);
+			l->padvalue = get_pad_value(l->sub, &index);
+			l->preci = get_preci(l->sub, &index, &l->ispreci);
+			l->modif = get_modif(l->sub, &index);
+			l->format = get_format(l->sub, &index);
+		}
 		l = l->nxt;
 	}
-	ft_putendl(l->sub);
 }
 
-t_pf					*parse_input(char *str)
+t_pf		*basic_split(char *str)
 {
-	t_pf				*hd;
-	t_pf				*curr;
-	t_pf				*next;
-	unsigned long		index;
-	int					nxt_pct;
-	char 				*tmp;
+	t_pf	*hd;
+	t_pf	*tmp;
+	int		i;
+	int		len;
 
-	index = 0;
-	tmp = ft_strsub(str,0,(index = find_percent(str,0)));
-	hd = pf_new(tmp, sizeof(tmp));
-	curr = hd;
-	while (index < ft_strlen(str))
+	i = 0;
+	hd = NULL;
+	len = strlen(str);
+	if (len > 0)
 	{
-		index = find_percent(str,index);
-		nxt_pct = find_percent(str,index + 1);
-		tmp = ft_strsub(str,index,nxt_pct - index);
-		next = pf_new(tmp, sizeof(tmp));
-		curr->nxt = next;
-		curr = curr->nxt;
-		index = (nxt_pct + 1);
+		hd = next_occ(str, &i);
+		tmp = hd;
+		while (i != -1)
+		{
+			tmp->nxt = next_occ(str, &i);
+			tmp = tmp->nxt;
+		}
 	}
-	display(hd);
 	return (hd);
 }
 
-/*
-   int			count_occ(char *s)
-   {
-   int 	rtn;
-   char	**tmp;
-   char	*
+t_pf		*parse_input(char *str)
+{
+	t_pf	*hd;
 
-   rtn = 0;
-   tmp = ft_strsplit(s, "%%");
-
-   return rtn;
-   }
-   */
-
+	hd = basic_split(str);
+	fill_struct(hd);
+	display(hd);
+	return (hd);
+}

@@ -13,6 +13,7 @@
 NAME = ft_printf
 
 SRC = ft_printf.c \
+	  get_val.c \
 	  parse.c \
 	  list.c \
 	  main.c

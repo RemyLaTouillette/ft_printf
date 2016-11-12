@@ -6,7 +6,7 @@
 /*   By: sduprey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 13:59:41 by sduprey           #+#    #+#             */
-/*   Updated: 2016/11/10 17:54:41 by vpailhe          ###   ########.fr       */
+/*   Updated: 2016/11/12 18:28:58 by vpailhe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 # define FT_PRINTF_H
 
 # include <libft.h>
-
 # include <stdarg.h>
+# include <stdio.h>
+
+
 
 // "salut les %s ! %dede %i"
 
@@ -31,16 +33,32 @@ typedef struct	s_pf
 
 	int			lpad;
 	int			rpad;
+	int			padvalue;
 	char		pad;
 
-	char		modif; // h H(hh) l L(ll) j z
+	char		*modif; // h H(hh) l L(ll) j z
 
-	char		format; // sSpdDiouUxXcC
+	char		*format; // sSpdDiouUxXcC
 	struct s_pf	*nxt;
 }				t_pf;
 
 int				ft_printf(char *str, ...);
 t_pf			*parse_input(char *str);
 t_pf			*pf_new(void const *content, size_t content_size);
+
+/*get_val*/
+int				get_pad_value(char *s, int *i);
+int				get_preci(char *s, int *i, int *ispreci);
+char			*get_flag(char *s, int *i);
+char			*get_modif(char *s, int *i);
+char			*get_format(char *s, int *i);
+
+/*parse*/
+void			display(t_pf *l);
+void			fill_struct(t_pf *l);
+t_pf			*next_occ(char *s, int *i);
+t_pf			*basic_split(char *str);
+t_pf			*parse_input(char *str);
+
 
 #endif
