@@ -13,7 +13,6 @@
 NAME = ft_printf
 
 SRC = ft_printf.c \
-	  get_val.c \
 	  parse.c \
 	  list.c \
 	  main.c
@@ -47,7 +46,7 @@ RM = rm -rf
 all: lft $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) -lncurses -o $(NAME) $^ $(LIB)
+	@$(CC) $(CFLAGS) -lncurses -o $(NAME) $(LIB) $^
 	@echo ""
 	@echo $(PX_STR) : $(EX_STR)
 	@echo ""
