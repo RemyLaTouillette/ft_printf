@@ -1,5 +1,22 @@
 #include <ft_printf.h>
 
+void	init_blank(t_pf *lst)
+{
+	lst->sub = NULL;
+	lst->content_size = 0;
+	lst->flag = NULL;
+	lst->length = 0;
+	lst->preci = 0;
+	lst->ispreci = 0;
+	lst->lpad = 0;
+	lst->rpad = 0;
+	lst->padvalue = 0;
+	lst->pad = 0;
+	lst->modif = NULL;
+	lst->format = NULL;
+	lst->nxt = NULL;
+}
+
 t_pf	*pf_new(void const *sub, size_t content_size)
 {
 	t_pf	*lst;
@@ -9,16 +26,8 @@ t_pf	*pf_new(void const *sub, size_t content_size)
 	ccpy = (void *)malloc(content_size);
 	if (!lst || !ccpy)
 		return (NULL);
-	if (!sub || !content_size)
-	{
-		lst->sub = NULL;
-		lst->content_size = 0;
-	}
-	else
-	{
-		lst->sub = ft_memcpy(ccpy, sub, content_size);
-		lst->content_size = content_size;
-	}
-	lst->nxt = NULL;
+	init_blank(lst);
+	lst->sub = ft_memcpy(ccpy, sub, content_size);
+	lst->content_size = content_size;
 	return (lst);
 }

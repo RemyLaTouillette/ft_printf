@@ -6,7 +6,7 @@
 /*   By: sduprey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 13:59:41 by sduprey           #+#    #+#             */
-/*   Updated: 2016/11/12 18:28:58 by vpailhe          ###   ########.fr       */
+/*   Updated: 2016/11/12 19:07:56 by vpailhe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include <libft.h>
 # include <stdarg.h>
 # include <stdio.h>
-
-
 
 // "salut les %s ! %dede %i"
 
