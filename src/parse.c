@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: vpailhe <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/12 11:51:56 by vpailhe           #+#    #+#             */
-/*   Updated: 2016/11/12 18:28:40 by vpailhe          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <ft_printf.h>
 
 void		display(t_pf *l)
@@ -26,14 +14,16 @@ void		display(t_pf *l)
 		printf("TYPE	|%s|\n\n", l->format);
 		display(l->nxt);
 	}
+	else
+		printf("\n////////////////////////////////////\n\n");
 }
 
 t_pf		*next_occ(char *s, int *i)
 {
 	t_pf	*rtn;
 	char	*tmpstr;
-	int		start;
-	int		end;
+	int	start;
+	int	end;
 
 	start = *i;
 	rtn = NULL;
@@ -45,7 +35,6 @@ t_pf		*next_occ(char *s, int *i)
 		while (s[end] != '\0' && s[end] != '%')
 			++end;
 		tmpstr = ft_strsub(s, start, (end - start));
-		tmpstr[(end - start) + 1] = '\0';
 		rtn = pf_new(tmpstr, ft_strlen(tmpstr) + 1);
 		free(tmpstr);
 		*i = end;
@@ -53,6 +42,25 @@ t_pf		*next_occ(char *s, int *i)
 	else
 		*i = -1;
 	return (rtn);
+}
+
+t_pf		*noform(t_pf *l, int i)
+{
+	char	*first;
+	char	*second;
+	t_pf	*newnext;
+	t_pf	*tmp;
+
+	first = ft_strsub(l->sub, 0, i);
+	second = ft_strsub(l->sub,i, ft_strlen(l->sub));
+	free(l->sub);
+	l->sub = first;
+	newnext = pf_new(second, ft_strlen(second) + 1);
+	free(second);
+	tmp = l->nxt;
+	l->nxt = newnext;
+	newnext->nxt = tmp;
+	return (l->nxt);
 }
 
 void		fill_struct(t_pf *l)
@@ -69,6 +77,7 @@ void		fill_struct(t_pf *l)
 			l->preci = get_preci(l->sub, &index, &l->ispreci);
 			l->modif = get_modif(l->sub, &index);
 			l->format = get_format(l->sub, &index);
+			l = ((int)ft_strlen(l->sub) > index) ? noform(l, index) : l;
 		}
 		l = l->nxt;
 	}
@@ -78,8 +87,8 @@ t_pf		*basic_split(char *str)
 {
 	t_pf	*hd;
 	t_pf	*tmp;
-	int		i;
-	int		len;
+	int	i;
+	int	len;
 
 	i = 0;
 	hd = NULL;

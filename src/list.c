@@ -31,3 +31,15 @@ t_pf	*pf_new(void const *sub, size_t content_size)
 	lst->content_size = content_size;
 	return (lst);
 }
+
+void	free_lst(t_pf *lst)
+{
+	t_pf	*tmp;
+
+	if (lst)
+	{
+		tmp = lst;
+		free_lst(lst->nxt);
+		free(tmp);
+	}
+}

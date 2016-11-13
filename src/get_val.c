@@ -36,7 +36,7 @@ char		*get_flag(char *s, int *i)
 	index = *i;
 	rtn = ft_strnew(6);
 	rtn_i = 0;
-	while (s[index] && s[index] != '\0' && ft_strchr("0-+# ", s[index]) != NULL)
+	while (s[index] && s[index] != '\0' && ft_strchr("0-+# ", s[index]))
 	{
 		rtn[rtn_i] = s[index];
 		rtn_i++;
@@ -79,25 +79,26 @@ int			get_preci(char *s, int *i, int *ispreci)
 		rtn = ft_atoi(tmp);
 		free(tmp);
 		*ispreci = 1;
+		*i += index - 1;
 		return (rtn);
 	}
 	*ispreci = 0;
 	return (0);
 }
 
-char		*get_modif(char *s, int *i)
+char			*get_modif(char *s, int *i)
 {
-	char	*rtn;
+	char		*rtn;
 	int		index;
 	int		rtn_i;
 
 	index = *i + 1;
 	rtn_i = 0;
-	while (s[index] && s[index] != '\0' && ft_strchr("hljz", s[index]) != NULL)
+	while (s[index] != '\0' && ft_strchr("hljz", s[index]))
 		index++;
 	rtn = ft_strnew((index - *i) + 1);
 	index = *i;
-	while (s[index] && s[index] != '\0' && ft_strchr("hljz", s[index]) != NULL)
+	while (s[index] != '\0' && ft_strchr("hljz", s[index]))
 	{
 		rtn[rtn_i] = s[index];
 		rtn_i++;
@@ -113,21 +114,19 @@ char		*get_modif(char *s, int *i)
 	return (rtn);
 }
 
-char		*get_format(char *s, int *i)
+char			*get_format(char *s, int *i)
 {
-	char	*rtn;
+	char		*rtn;
 	int		index;
 	int		rtn_i;
 
 	index = *i + 1;
 	rtn_i = 0;
-	while (s[index] && s[index] != '\0' && \
-			ft_strchr("sSpdDiouUxXcC", s[index]) != NULL)
+	while (s[index] != '\0' && ft_strchr("sSpdDiouUxXcC", s[index]))
 		index++;
-	rtn = ft_strnew((index - *i) + 1);
+	rtn = ft_strnew((index - *i));
 	index = *i;
-	while (s[index] && s[index] != '\0' && \
-			ft_strchr("sSpdDiouUxXcC", s[index]) != NULL)
+	while (s[index] != '\0' && ft_strchr("sSpdDiouUxXcC", s[index]))
 	{
 		rtn[rtn_i] = s[index];
 		rtn_i++;

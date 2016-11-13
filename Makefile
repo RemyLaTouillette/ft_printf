@@ -15,6 +15,7 @@ NAME = ft_printf
 SRC = ft_printf.c \
 	  get_val.c \
 	  parse.c \
+	  exception.c \
 	  list.c \
 	  main.c
 
