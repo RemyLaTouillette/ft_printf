@@ -30,12 +30,15 @@ int			get_pad_value(char *s, int *i)
 char		*get_flag(char *s, int *i)
 {
 	char	*rtn;
-	int		index;
-	int		rtn_i;
+	int	index;
+	int	rtn_i;
 
 	index = *i;
-	rtn = ft_strnew(6);
 	rtn_i = 0;
+	while (s[index] && s[index] != '\0' && ft_strchr("0-+# ", s[index]))
+		index++;
+	rtn = ft_strnew(index);
+	index = *i;
 	while (s[index] && s[index] != '\0' && ft_strchr("0-+# ", s[index]))
 	{
 		rtn[rtn_i] = s[index];
@@ -52,10 +55,10 @@ char		*get_flag(char *s, int *i)
 	return (rtn);
 }
 
-int			get_preci(char *s, int *i, int *ispreci)
+int		get_preci(char *s, int *i, int *ispreci)
 {
-	int		rtn;
-	int		index;
+	int	rtn;
+	int	index;
 	char	*tmp;
 
 	rtn = 0;
@@ -140,4 +143,21 @@ char			*get_format(char *s, int *i)
 	}
 	*i = index;
 	return (rtn);
+}
+
+void			*get_val(va_list ap, char *format)
+{
+	printf("GET_VAL|%s|\n",format);
+	ap = NULL;
+	format = NULL;
+	/*
+	if (format)
+	{
+		if (!ft_strcmp(format, ""))
+		{
+			return NULL;
+		}
+	}
+	*/
+	return (void *)"bonjour";
 }

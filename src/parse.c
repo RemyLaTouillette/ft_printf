@@ -63,13 +63,14 @@ t_pf		*noform(t_pf *l, int i)
 	return (l->nxt);
 }
 
-void		fill_struct(t_pf *l)
+void		fill_struct(t_pf *l, va_list ap)
 {
 	int		index;
 
+	ap = NULL;
 	while (l)
 	{
-		if (l->sub[0] == '%')
+		if (l->sub && l->sub[0] == '%')
 		{
 			index = 1;
 			l->flag = get_flag(l->sub, &index);
@@ -77,6 +78,7 @@ void		fill_struct(t_pf *l)
 			l->preci = get_preci(l->sub, &index, &l->ispreci);
 			l->modif = get_modif(l->sub, &index);
 			l->format = get_format(l->sub, &index);
+			l->val = get_val(ap, l->format);
 			l = ((int)ft_strlen(l->sub) > index) ? noform(l, index) : l;
 		}
 		l = l->nxt;
@@ -106,12 +108,13 @@ t_pf		*basic_split(char *str)
 	return (hd);
 }
 
-t_pf		*parse_input(char *str)
+t_pf		*parse_input(char *str, va_list ap)
 {
 	t_pf	*hd;
 
+	printf("INPUT|%s|\n",str);
 	hd = basic_split(str);
-	fill_struct(hd);
+	fill_struct(hd, ap);
 	display(hd);
 	return (hd);
 }

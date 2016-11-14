@@ -41,7 +41,7 @@ INC = -I ./inc -I libft/includes
 
 LIB = -L libft -lft
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -g -Wall -Werror -Wextra
 
 RM = rm -rf
 
