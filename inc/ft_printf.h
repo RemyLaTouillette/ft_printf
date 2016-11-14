@@ -29,6 +29,12 @@ typedef struct		s_pf
 	struct s_pf	*nxt;
 }			t_pf;
 
+typedef struct		s_form
+{
+	char		*flag;
+	void		*(*val)(va_list ap);
+}			t_form;
+
 int			ft_printf(char *str, ...);
 
 /*list.c*/

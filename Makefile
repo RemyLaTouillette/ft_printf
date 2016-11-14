@@ -17,6 +17,7 @@ SRC = ft_printf.c \
 	  parse.c \
 	  exception.c \
 	  list.c \
+	  misc.c \
 	  main.c
 
 SRCDIR = src/
