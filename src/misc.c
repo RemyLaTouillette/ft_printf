@@ -22,13 +22,7 @@ void		*string_type(va_list ap)
 {
 	char 	*rtn;
 
-	rtn = NULL;
-	ft_putstr("[STRING_TYPE]\n");
-	rtn = va_arg(ap, char*);		//SEGFAULT
-	ft_putstr("\n|");
-	ft_putstr(rtn);
-	ft_putstr("|\n");
-	ap = NULL;
+	rtn = va_arg(ap, char*);
 	return rtn;
 }
 

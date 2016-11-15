@@ -139,11 +139,10 @@ void			*get_val(va_list ap, char format)
 	int			tablen;
 
 	pf = createArray(&tablen);
-	ap = NULL;
 	while (tablen--)
 	{
 		printf("	[LOOP]\n");
-		if (pf[tablen].flag == format)
+		if (pf[tablen].flag && pf[tablen].flag == format)
 			pf[tablen].func(ap);
 	}
 	printf("	[OUT LOOP]\n");

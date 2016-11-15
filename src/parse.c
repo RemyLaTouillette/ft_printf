@@ -50,7 +50,6 @@ void		fill_struct(t_pf *l, va_list ap)
 {
 	int		index;
 
-	ap = NULL;
 	while (l)
 	{
 		if (l->sub && l->sub[0] == '%')

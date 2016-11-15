@@ -10,6 +10,7 @@ int				ft_printf(char *str, ...)
 	start = parse_input(str, ap);
 	handle_exce(start);
 	free_lst(start);
+	va_end(ap);
 	i = 0;
 	return (0);
 }
