@@ -25,14 +25,14 @@ typedef struct		s_pf
 
 	char		*modif; // h H(hh) l L(ll) j z
 
-	char		*format; // sSpdDiouUxXcC
+	char		format; // sSpdDiouUxXcC
 	struct s_pf	*nxt;
 }			t_pf;
 
 typedef struct		s_form
 {
-	char		*flag;
-	void		*(*val)(va_list ap);
+	char		flag;
+	void		*(*func)(va_list ap);
 }			t_form;
 
 int			ft_printf(char *str, ...);
@@ -46,8 +46,8 @@ int			get_pad_value(char *s, int *i);
 int			get_preci(char *s, int *i, int *ispreci);
 char			*get_flag(char *s, int *i);
 char			*get_modif(char *s, int *i);
-char			*get_format(char *s, int *i);
-void			*get_val(va_list ap, char *format);
+char			get_format(char *s, int *i);
+void			*get_val(va_list ap, char format);
 
 /*parse.c*/
 void			display(t_pf *l);
@@ -58,6 +58,9 @@ t_pf			*parse_input(char *str, va_list ap);
 
 /*exception.c*/
 void			handle_exce(t_pf *lst);
+
+/*misc.c*/
+t_form			*createArray(int *i);
 
 
 #endif

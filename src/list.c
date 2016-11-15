@@ -13,7 +13,7 @@ void	init_blank(t_pf *lst)
 	lst->padvalue = 0;
 	lst->pad = 0;
 	lst->modif = NULL;
-	lst->format = NULL;
+	lst->format = ' ';
 	lst->nxt = NULL;
 }
 

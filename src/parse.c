@@ -61,6 +61,7 @@ void		fill_struct(t_pf *l, va_list ap)
 			l->preci = get_preci(l->sub, &index, &l->ispreci);
 			l->modif = get_modif(l->sub, &index);
 			l->format = get_format(l->sub, &index);
+			printf("[GET FORMAT] => |%c|\n",l->format);
 			l->val = get_val(ap, l->format);
 			l = ((int)ft_strlen(l->sub) > index) ? noform(l, index) : l;
 		}

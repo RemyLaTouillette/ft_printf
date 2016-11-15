@@ -117,44 +117,42 @@ char			*get_modif(char *s, int *i)
 	return (rtn);
 }
 
-char			*get_format(char *s, int *i)
+char			get_format(char *s, int *i)
 {
-	char		*rtn;
-	int		index;
-	int		rtn_i;
+	char		rtn;
 
-	index = *i + 1;
-	rtn_i = 0;
-	while (s[index] != '\0' && ft_strchr("sSpdDiouUxXcC", s[index]))
-		index++;
-	rtn = ft_strnew((index - *i));
-	index = *i;
-	while (s[index] != '\0' && ft_strchr("sSpdDiouUxXcC", s[index]))
+	printf("YOYOYO => |%c|\n",s[*i]);
+	rtn = (char)malloc(sizeof(char));
+	if (s[*i] != '\0' && ft_strchr("sSpdDiouUxXcC", s[*i]))
 	{
-		rtn[rtn_i] = s[index];
-		rtn_i++;
-		index++;
+		rtn = s[*i];
+		*i = *i + 1;
 	}
-	rtn[rtn_i] = '\0';
-	if (index == *i)
-	{
-		free(rtn);
-		return (NULL);
-	}
-	*i = index;
+	else
+		rtn = ' ';
 	return (rtn);
 }
 
-void			*get_val(va_list ap, char *format)
+void			*get_val(va_list ap, char format)
 {
-	printf("GET_VAL|%s|\n",format);
+	t_form		*pf;
+	int			tablen;
+
+	pf = createArray(&tablen);
 	ap = NULL;
-	format = NULL;
-	/*
-	if (format)
+	while (tablen--)
 	{
-		if (!ft_strcmp(format, ""))
+		printf("	[LOOP]\n");
+		if (pf[tablen].flag == format)
+			pf[tablen].func(ap);
+	}
+	printf("	[OUT LOOP]\n");
+	/*
+	if (format != ' ')
+	{
+		if (format == 'S' || format == 's')
 		{
+
 			return NULL;
 		}
 	}

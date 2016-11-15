@@ -1,9 +1,9 @@
 #include <ft_printf.h>
 
-int			ft_printf(char *str, ...)
+int				ft_printf(char *str, ...)
 {
 	va_list		ap;
-	int		i;
+	int			i;
 	t_pf		*start;
 
 	va_start(ap, str);
