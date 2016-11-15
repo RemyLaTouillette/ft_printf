@@ -121,7 +121,6 @@ char			get_format(char *s, int *i)
 {
 	char		rtn;
 
-	printf("YOYOYO => |%c|\n",s[*i]);
 	rtn = (char)malloc(sizeof(char));
 	if (s[*i] != '\0' && ft_strchr("sSpdDiouUxXcC", s[*i]))
 	{
@@ -137,24 +136,18 @@ void			*get_val(va_list ap, char format)
 {
 	t_form		*pf;
 	int			tablen;
+	void		*rtn;
 
+	rtn = NULL;
 	pf = createArray(&tablen);
 	while (tablen--)
-	{
-		printf("	[LOOP]\n");
 		if (pf[tablen].flag && pf[tablen].flag == format)
-			pf[tablen].func(ap);
-	}
-	printf("	[OUT LOOP]\n");
-	/*
-	if (format != ' ')
+			rtn = pf[tablen].func(ap);
+	if (format == 's')
 	{
-		if (format == 'S' || format == 's')
-		{
-
-			return NULL;
-		}
+		ft_putstr("[GET_VAL]");
+		ft_putstr((char *)rtn);
+		ft_putstr("\n");
 	}
-	*/
-	return (void *)"bonjour";
+	return rtn;
 }

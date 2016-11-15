@@ -24,7 +24,7 @@ int	main(int ac, char **av)
 
 
 
-	ft_printf("   %s  %d   %Ss ","HELLO THERE", 42, "BIEN");
+	ft_printf("   %s    %s ","HELLO THERE", "BIEN");
 
 
 //	printf("%ss","TEST");

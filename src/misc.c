@@ -11,7 +11,10 @@ void		display(t_pf *l)
 		printf("ISPRECI	|%d|\n", l->ispreci);
 		printf("PRECI	|%d|\n", l->preci);
 		printf("MODIF	|%s|\n", l->modif);
-		printf("TYPE	|%c|\n\n", l->format);
+		printf("TYPE	|%c|\n", l->format);
+		if (l->format == 's')
+			printf("VAL S	|%s|\n",(char *)l->val);
+		printf("\n");
 		display(l->nxt);
 	}
 	else
