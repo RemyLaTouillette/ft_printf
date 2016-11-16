@@ -59,7 +59,7 @@ t_pf			*parse_input(char *str, va_list ap);
 /*exception.c*/
 void			handle_exce(t_pf *lst);
 
-/*misc.c*/
+/*funcArray.c*/
 t_form			*createArray(int *i);
 
 

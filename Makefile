@@ -18,6 +18,7 @@ SRC = ft_printf.c \
 	  exception.c \
 	  list.c \
 	  misc.c \
+	  funcArray.c \
 	  main.c
 
 SRCDIR = src/
