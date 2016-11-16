@@ -13,6 +13,11 @@
 NAME = ft_printf
 
 SRC = ft_printf.c \
+	  get_val.c \
+	  parse.c \
+	  exception.c \
+	  list.c \
+	  misc.c \
 	  main.c
 
 SRCDIR = src/
@@ -37,14 +42,14 @@ INC = -I ./inc -I libft/includes
 
 LIB = -L libft -lft
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -g -Wall -Werror -Wextra
 
 RM = rm -rf
 
 all: lft $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) -lncurses -o $(NAME) $(LIB) $^
+	@$(CC) $(CFLAGS) -lncurses -o $(NAME) $^ $(LIB)
 	@echo ""
 	@echo $(PX_STR) : $(EX_STR)
 	@echo ""
