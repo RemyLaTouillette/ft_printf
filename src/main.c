@@ -24,7 +24,10 @@ int	main(int ac, char **av)
 
 
 
-	ft_printf("   %s    %d ","HELLO THERE", 42);
+	ft_printf("   %0-hhs    %d %C","HELLO THERE", 42, 42);
+
+	printf("|%u|\n", 42);
+	printf("|%u|\n", 8);
 
 
 //	printf("%ss","TEST");

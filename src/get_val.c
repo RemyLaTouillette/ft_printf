@@ -151,3 +151,4 @@ void			*get_val(va_list ap, char format)
 	}
 	return rtn;
 }
+
