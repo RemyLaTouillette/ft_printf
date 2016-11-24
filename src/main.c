@@ -6,47 +6,52 @@ int	main(int ac, char **av)
 {
 	(void)ac;
 	(void)av;
-	//	ft_printf("Hello world! %s et test %");
-	//	ft_printf("zz %s a %d#-LLd %% hey", "test");
+
+	ft_printf("%d\n", 42);
 
 
+	char *lol;
 
-	//	ft_printf("zz %s a %.2d#-LLd %hey");
-	//	ft_printf("%x %X %p %20.15d\n");
+	lol = "fwefwfwf";
 
-	//	ft_printf("\n\n|%l|\n\n",130);
-
-
-//	ft_printf("%-10d% d%+d%010d%hhd\n");
-
-//	ft_printf("%-10d % d%   dqd dqw d%010d%hhd\n");
-
-
-
-
-//	ft_printf("   %0-hhs    %d %C","HELLO THERE", 42, 42);
 
 	/*
-	printf("|%u|\n", 42);
-	printf("|%u|\n", 8);
+	void	*bjr;
+//	bjr = NULL;
+	bjr = &lol;
+	printf("%p\n",bjr);
 
-	printf("|%o|\n", 42);
-	printf("|%o|\n", 8);
+	bjr = NULL;
+	printf("%p\n",bjr);
 	*/
 
-	ft_printf("%s i%%    %%", "yo");
+	void	*bjr;
+	bjr = &lol;
+
+	printf("FIRST|%p|\n",bjr);
+
+	int hie = (int)&lol;
+	printf("\nSECOND|%x|\n", hie);
 
 
 
 
-	//ft_printf("%-10d% d %+d%010d %hhd\n");
-
-
-	//	ft_printf("%jd %zd %u %o %#08x\n");
-	//	ft_printf("%x %#X %S %s%s\n");
-
-
-
+	/*
+	   ft_printf(" hello %d ", 42);
+	   ft_printf("\n");
+	   ft_printf("%%\n");
+	   ft_printf("%d\n", 42);
+	   ft_printf("%d%d\n", 42, 41);
+	   ft_printf("%d%d%d\n", 42, 43, 44);
+	   ft_printf("%ld\n", l);
+	   ft_printf("%lld\n", ll);
+	   ft_printf("%x %X %p %20.15d\n", 505, 505, &ll, 54321);
+	   ft_printf("%-10d % d %+d %010d %hhd\n", 3, 3, 3, 1, c);
+	   ft_printf("%jd %zd %u %o %#08x\n", im, (size_t)i, i, 40, 42);
+	   ft_printf("%x %#X %S %s%s\n", 1000, 1000, L"ݗݜशব", "test", "test2");
+	   ft_printf("%s%s%s\n", "test", "test", "test");
+	   ft_printf("%C\n", 15000);
+	   */
 
 	return (0);
 }

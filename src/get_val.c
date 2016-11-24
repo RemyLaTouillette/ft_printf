@@ -139,13 +139,12 @@ void			*get_val(va_list ap, char format)
 	void		*rtn;
 
 	rtn = NULL;
-	pf = createArray(&tablen);
+	pf = createGetArray(&tablen);
 	while (tablen--)
 		if (pf[tablen].flag && pf[tablen].flag == format)
 			rtn = pf[tablen].func(ap);
 	if (format == 's')
 	{
-		ft_putstr("[GET_VAL]");
 		if (rtn != NULL)
 			ft_putstr((char *)rtn);
 		ft_putstr("\n");

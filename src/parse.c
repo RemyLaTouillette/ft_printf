@@ -117,9 +117,7 @@ t_pf		*parse_input(char *str, va_list ap)
 {
 	t_pf	*hd;
 
-	printf("INPUT|%s|\n",str);
 	hd = basic_split(str);
 	fill_struct(hd, ap);
-	display(hd);
 	return (hd);
 }

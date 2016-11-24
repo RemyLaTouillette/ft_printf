@@ -1,7 +1,14 @@
 #include <ft_printf.h>
 
+void		handle_flags(t_pf *lst)
+{
+	while (lst)
+	{
+		lst = lst->nxt;	
+	}
+}
+
 void		handle_exce(t_pf *lst)
 {
-	/*Do weird shit*/
-	lst = lst->nxt;
+	handle_flags(lst);
 }
