@@ -19,6 +19,7 @@ SRC = ft_printf.c \
 	  list.c \
 	  misc.c \
 	  funcArray.c \
+	  buff.c \
 	  main.c
 
 SRCDIR = src/

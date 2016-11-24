@@ -63,5 +63,8 @@ void			handle_exce(t_pf *lst);
 /*funcArray.c*/
 t_form			*createArray(int *i);
 
+/*buffer.c*/
+char			*createBuffer(t_pf *start);
+
 
 #endif

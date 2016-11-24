@@ -9,6 +9,7 @@ int				ft_printf(char *str, ...)
 	va_start(ap, str);
 	start = parse_input(str, ap);
 	handle_exce(start);
+	createBuffer(start);
 	free_lst(start);
 	va_end(ap);
 	i = 0;

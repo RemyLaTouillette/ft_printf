@@ -17,7 +17,7 @@ int	main(int ac, char **av)
 	//	ft_printf("\n\n|%l|\n\n",130);
 
 
-	ft_printf("%-10d% d%+d%010d%hhd\n");
+//	ft_printf("%-10d% d%+d%010d%hhd\n");
 
 //	ft_printf("%-10d % d%   dqd dqw d%010d%hhd\n");
 
@@ -34,7 +34,7 @@ int	main(int ac, char **av)
 	printf("|%o|\n", 8);
 	*/
 
-//	ft_printf("%s i%%    %%", "yo");
+	ft_printf("%s i%%    %%", "yo");
 
 
 
