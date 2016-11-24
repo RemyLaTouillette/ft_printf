@@ -146,7 +146,8 @@ void			*get_val(va_list ap, char format)
 	if (format == 's')
 	{
 		ft_putstr("[GET_VAL]");
-		ft_putstr((char *)rtn);
+		if (rtn != NULL)
+			ft_putstr((char *)rtn);
 		ft_putstr("\n");
 	}
 	return rtn;

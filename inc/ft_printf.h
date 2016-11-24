@@ -14,6 +14,7 @@ typedef struct		s_pf
 	char		*sub;
 	char		*flag; // '0', -, +, #, ' '
 	int		length;
+	int			is_perper; //Double % => "%%"
 
 	int		preci;
 	int		ispreci;

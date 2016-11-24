@@ -15,6 +15,7 @@ void	init_blank(t_pf *lst)
 	lst->modif = NULL;
 	lst->format = ' ';
 	lst->nxt = NULL;
+	lst->is_perper = 0;
 }
 
 t_pf	*pf_new(void const *sub, size_t content_size)

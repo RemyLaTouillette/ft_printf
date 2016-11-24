@@ -17,20 +17,25 @@ int	main(int ac, char **av)
 	//	ft_printf("\n\n|%l|\n\n",130);
 
 
-//	ft_printf("%-10d% d%+d%010d%hhd\n");
+	ft_printf("%-10d% d%+d%010d%hhd\n");
 
 //	ft_printf("%-10d % d%   dqd dqw d%010d%hhd\n");
 
 
 
 
-	ft_printf("   %0-hhs    %d %C","HELLO THERE", 42, 42);
+//	ft_printf("   %0-hhs    %d %C","HELLO THERE", 42, 42);
 
+	/*
 	printf("|%u|\n", 42);
 	printf("|%u|\n", 8);
 
+	printf("|%o|\n", 42);
+	printf("|%o|\n", 8);
+	*/
 
-//	printf("%ss","TEST");
+//	ft_printf("%s i%%    %%", "yo");
+
 
 
 
